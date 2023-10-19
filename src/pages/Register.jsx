@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -23,7 +23,8 @@ const Register = () => {
   const [passwordError, setPasswordError] = useState("");
 
   // MUI FORM TEMPLATE
-  const [showPassword, setShowPassword] = React.useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showComfPassword, setShowComfPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -68,29 +69,22 @@ const Register = () => {
 
   return (
     <form className="shadow-black" onSubmit={(e) => handleSubmit(e)}>
-      <h1 className="text-5xl text-amber-500">Create an Account</h1>
+      <h1 className="text-4xl text-amber-500">Create an Account</h1>
       {errors && <h3>{errors}</h3>}
-      {/* <input
-        type="email"
+      <TextField
+        id="outlined-basic"
         onChange={(e) => setEmail(e.target.value)}
-        placeholder="enter email"
+        label="Email"
+        variant="outlined"
       />
-      <input
-        type="text"
+      <br />
+      <TextField
+        id="outlined-basic"
         onChange={(e) => setUsername(e.target.value)}
-        placeholder="enter username"
-      /> */}
-      {/* <input
-         type="password"
-         onChange={(e) => setPassword(e.target.value)}
-         placeholder="enter password"
-       /> */}
-      <TextField id="outlined-basic" label="Email" variant="outlined" />
+        label="Username"
+        variant="outlined"
+      />
       <br />
-
-      <TextField id="outlined-basic" label="Username" variant="outlined" />
-      <br />
-
       <FormControl sx={{ width: "100%" }} variant="outlined">
         <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
         <OutlinedInput
@@ -113,24 +107,23 @@ const Register = () => {
         />
       </FormControl>
       <br />
-
       <FormControl sx={{ width: "100%" }} variant="outlined">
         <InputLabel htmlFor="outlined-adornment-password">
           confirm password
         </InputLabel>
         <OutlinedInput
           id="outlined-adornment-password"
-          type={showPassword ? "text" : "password"}
-          onChange={(e) => setPassword(e.target.value)}
+          type={showComfPassword ? "text" : "password"}
+          onChange={(e) => setConfirmPassword(e.target.value)}
           endAdornment={
             <InputAdornment position="end">
               <IconButton
                 aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
+                onClick={() => setShowComfPassword((show) => !show)}
                 onMouseDown={handleMouseDownPassword}
                 edge="end"
               >
-                {showPassword ? <VisibilityOff /> : <Visibility />}
+                {showComfPassword ? <VisibilityOff /> : <Visibility />}
               </IconButton>
             </InputAdornment>
           }
@@ -144,6 +137,12 @@ const Register = () => {
       /> */}
       {passwordError && <small>{passwordError}</small>}
       <button>{isLoading ? "Loading" : "Submit"}</button>
+      <p className="login-link py-2">
+        Already have an account?{" "}
+        <Link to="/login" className="text-amber-500">
+          Sign in
+        </Link>
+      </p>
     </form>
   );
 };
