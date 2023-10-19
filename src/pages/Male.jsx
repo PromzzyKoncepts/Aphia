@@ -27,7 +27,7 @@ function Male() {
          </h1>
          <main>
             <div className="images">
-               {data.map((image, id) => {
+               {data?.map((image, id) => {
                   return (
                      <div className="image" key={id}>
                         <img src={image.image} alt={image.title} />
