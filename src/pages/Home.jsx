@@ -1,31 +1,18 @@
 import React from "react";
 import "../stylesheets/Home.css";
 import { NavLink } from "react-router-dom";
+import Slider from "../components/Slider";
+import Section2 from "../components/Section2";
+import Footer from "../components/Footer";
 
 const Home = () => {
   return (
     <div>
-      <div flex flex-row>
-        <h3>Categories</h3>
-
-        <div>
-          <NavLink>Shoes</NavLink>
-        </div>
-        <div>
-          <NavLink>Fashion</NavLink>
-        </div>
-        <div>
-          <NavLink>Accessories</NavLink>
-        </div>
-        <div>
-          <NavLink>Phone & Tablets</NavLink>
-        </div>
-
-        <div>
-          <NavLink>Other Categories</NavLink>
-        </div>
-      </div>
+      <Slider />
+      <Section2 />
+        
       <div></div>
+      <Footer />
     </div>
   );
 };
