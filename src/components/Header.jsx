@@ -2,11 +2,6 @@ import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import aphia from "../assets/aphia.png";
 import jumiagif from "../assets/Jumiagif.gif";
-import {
-  BsFillArrowUpCircleFill,
-  BsFillArrowDownCircleFill,
-} from "react-icons/bs";
-import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import userContext from "../context/userContext";
 
@@ -15,6 +10,7 @@ import { styled } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import SearchIcon from "@mui/icons-material/Search";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -27,6 +23,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 const Header = () => {
   const { authUser } = useContext(userContext);
+  console.log(authUser);
   const [isCategories, setIsCategories] = useState(false);
   const handleCategories = () => setIsCategories((prev) => !prev);
   const allCartItems = useSelector((state) => state.cart); //access the cart proprty of the reducer in the store
@@ -34,26 +31,51 @@ const Header = () => {
     <div>
       <header>
         <img src={aphia} alt="aphia logo" className="header_logo"></img>
-        <nav>
-          <NavLink className="text-black" to="/">
-            Home
-          </NavLink>
+
+        <div class="wrap">
+          <div class="search">
+            <input
+              type="text"
+              class="searchTerm"
+              placeholder="Search for products, categories, brands"
+            />
+
+            <button type="submit" class="searchButton">
+              <SearchIcon />
+            </button>
+          </div>
+        </div>
+
+        <nav className="flex flex-row justify-center items-center">
+          <div>
+            <NavLink className="text-black" to="/">
+              Home
+            </NavLink>
+          </div>
+          <div>
           <p
             className="items-center"
             onMouseEnter={handleCategories}
             onMouseLeave={handleCategories}
           >
-            My account <ArrowDropDownIcon />
+            {authUser ? ` Hi ${authUser.username}` : "My account"}
+            <ArrowDropDownIcon />
             {isCategories && (
               <section className="categories rounded">
                 <p>
                   {authUser ? (
-                    <NavLink
-                      className="bg-amber-500 p-2 rounded text-white"
-                      to="/logout"
-                    >
-                      Log Out
-                    </NavLink>
+                    <div className="flex flex-col">
+                      <NavLink className="rounded text-white" to="/orders">
+                        Orders
+                      </NavLink>{" "}
+                      <br />
+                      <NavLink
+                        className="bg-amber-500 p-2 rounded text-white"
+                        to="/logout"
+                      >
+                        Log Out
+                      </NavLink>
+                    </div>
                   ) : (
                     <>
                       <p className=" mb-3">
@@ -73,21 +95,11 @@ const Header = () => {
                   )}
                 </p>
 
-                {/* <p>
-                   <NavLink to="/fashion/male">Male</NavLink>
-                 </p>
-                 <p>
-                   <NavLink to="/fashion/female">Female</NavLink>
-                 </p>
-                 <p>
-                   <NavLink to="/groceries">Groceries</NavLink>
-                 </p>
-                 <p>
-                   <NavLink to="/appliances">Appliances</NavLink>
-                 </p> */}
+                
               </section>
             )}
           </p>
+            </div>
           <NavLink
             to="/cart"
             className="hover-icon flex items-center gap-3 text-black"
