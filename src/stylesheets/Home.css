@@ -3,10 +3,28 @@
 }
 
 header {
-  background-color: #d3d3d3;
+  background-color: #ededed;
   color: #282828;
   display: flex;
   padding: 1rem 5rem ;
   align-items: center;
   justify-content: space-between;
 }
+
+
+.hoveredd {
+  filter: brightness(0.3);
+}
+
+.navlink div a.active {
+  background-color: black;
+}
+
+/* from section 2.jsx  */
+.categories>div:hover {
+
+  border-right: 1px solid #ff8d3a;
+}
+
+
+
