@@ -10,6 +10,7 @@ import Groceries from "./pages/Groceries";
 import Appliances from "./pages/Appliances";
 import Cart from "./pages/Cart";
 import LogOut from "./pages/LogOut";
+import AdminAuth from "./pages/AdminAuth";
 
 function App() {
    return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/appliances" element={<Appliances />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/auth" element={<AdminAuth />} />
             <Route path="/register" element={<Register />} />
             <Route path="/logout" element={<LogOut />} />
          </Routes>
