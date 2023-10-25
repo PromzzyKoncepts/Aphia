@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { BiMale } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { add } from "../components/redux/features/cartSlice";
+import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 
 function Male() {
    const [data, setData] = useState([]);
@@ -15,31 +15,41 @@ function Male() {
             const res = await axios.get("https://fakestoreapi.com/products");
             setData(res.data);
          } catch (error) {
+            console.log("res.data");
             console.log(error);
          }
       }
       fetchData();
    }, []);
    return (
-      <div>
-         <h1>
-            Welcome to my male wears page <BiMale />
-         </h1>
-         <main>
-            <div className="images">
-               {data?.map((image, id) => {
-                  return (
-                     <div className="image" key={id}>
-                        <img src={image.image} alt={image.title} />
-                        <h3>{image.title}</h3>
-                        <p>{image.description}</p>
-                        <button onClick={() => dispatch(add(image))}>Add To Cart</button>
-                     </div>
-                  );
-               })}
-            </div>
-         </main>
-      </div>
+     <div className="bg-slate-50">
+       <h3 className="">Men's Fashion</h3>
+       <span>{data.length} products available</span>
+       <main>
+         <div className="grid grid-cols-4 gap-3 w-10/12 m-auto">
+           {data?.map((item, id) => {
+             return (
+               <div className="bg-white p-3" key={id}>
+                 <img
+                   className="max-w-[10rem] h-[10rem] object-fill"
+                   src={item.image} 
+                   alt={item.title}
+                 />
+                 <h5>{item.title}</h5>
+                 {/* <p>{item.description}</p> */}
+                 <button
+                   className="bg-amber-500 text p-2 rounded text-slate-100 hover:bg-orange-500 items-center flex"
+                   onClick={() => dispatch(add(item))}
+                 >
+                   <ShoppingBagIcon />
+                   Shop now
+                 </button>
+               </div>
+             );
+           })}
+         </div>
+       </main>
+     </div>
    );
 }
 
