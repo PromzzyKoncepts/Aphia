@@ -1,20 +1,34 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = [];
+const initialState = {
+   items: [],
+   totalprice: 0
+};
 
 const cartSlice = createSlice({
    name: "cart",
    initialState,
    reducers: {
       add(state, action) {
-         state.push(action.payload); //payload is the item you clicked on (no return statement is needed)
+         const item = state.items.find((item) => item.id === action.payload.id);
+         if (item) {
+            item.quantity += 1;
+         } else {
+            state.items.push({ ...action.payload, quantity: 1 });
+         }
       },
       remove(state, action) {
-        return state.filter((item) => item.id !== action.payload); //item.id - id of all the items, action.payload- id of the one clicked on
+         state.items = state.items.filter((item) => item.id !== action.payload.id);
+      },
+      updateQuantity(state, action) {
+         const { id, quantity } = action.payload;
+         const item = state.items.find((item) => item.id === id);
+         if (item) {
+            item.quantity = quantity;
+         }
       },
    },
 });
 
-export const { add, remove } = cartSlice.actions; //named export
+export const { add, remove, updateQuantity } = cartSlice.actions;
 export default cartSlice.reducer;
-// use export default for your reducer and named export for your actions

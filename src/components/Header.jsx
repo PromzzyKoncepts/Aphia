@@ -23,10 +23,9 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 const Header = () => {
   const { authUser } = useContext(userContext);
-  console.log(authUser);
   const [isCategories, setIsCategories] = useState(false);
   const handleCategories = () => setIsCategories((prev) => !prev);
-  const allCartItems = useSelector((state) => state.cart); //access the cart proprty of the reducer in the store
+  const allCartItems = useSelector((state) => state.cart.items); //access the cart proprty of the reducer in the store
   return (
     <div>
       <header>
@@ -105,7 +104,7 @@ const Header = () => {
             className="hover-icon flex items-center gap-3 text-black"
           >
             <IconButton aria-label="cart">
-              <StyledBadge badgeContent={allCartItems.length} color="secondary">
+              <StyledBadge badgeContent={allCartItems?.length} color="secondary">
                 <ShoppingCartIcon />
               </StyledBadge>
             </IconButton>{" "}

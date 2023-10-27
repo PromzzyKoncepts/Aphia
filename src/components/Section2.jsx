@@ -60,7 +60,7 @@ const Section2 = () => {
           </div>
           <div className="hover:border-r-2 hover:border-amber-500 hover:bg-slate-300">
             <NavLink
-              className="p-3 no-underline text-[#3a3a3a] text-lg gap-2 flex items-center "
+              className="p-3 no-underline phones text-[#3a3a3a] text-lg gap-2 flex items-center "
               to="/devices"
             >
               <PhoneIphoneIcon />
