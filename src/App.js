@@ -12,6 +12,9 @@ import Cart from "./pages/Cart";
 import LogOut from "./pages/LogOut";
 import AdminAuth from "./pages/AdminAuth";
 import Checkout from "./components/checkout/Checkout";
+import Protected from "./HOC/Protected";
+import NotFound from "./components/404";
+import DashBoard from "./pages/DashBoard";
 
 function App() {
    return (
@@ -28,7 +31,16 @@ function App() {
             <Route path="/auth" element={<AdminAuth />} />
             <Route path="/register" element={<Register />} />
             <Route path="/logout" element={<LogOut />} />
-            <Route path="/shipping" element={<Checkout />} />
+            <Route path="/shipping" element={<Protected />}>
+               <Route index element={<Checkout />} />
+            </Route>
+            <Route path="/dashboard" element={<Protected />}>
+               <Route index element={<DashBoard />} />
+            </Route>
+
+            {/* 404 PAGE */}
+            <Route path="*" element={<NotFound />} />
+
          </Routes>
       </div>
    );
