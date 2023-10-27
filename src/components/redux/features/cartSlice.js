@@ -1,9 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = {
    items: [],
-   totalprice: 0
+   total: 0
+
 };
+
+
+export const calculateTotalAsync = createAsyncThunk("cart/calculateTotalAsync", async (_, { dispatch, getState }) => {
+   let total = 0;
+   const cartItems = getState().cart.items;
+
+   for (const item of cartItems) {
+      total += item.price * (item.quantity || 1);
+   }
+
+   dispatch(calculateTotal(total));
+});
 
 const cartSlice = createSlice({
    name: "cart",
@@ -27,8 +41,14 @@ const cartSlice = createSlice({
             item.quantity = quantity;
          }
       },
+      deleteAll(state) {
+         state.items.length = 0
+      },
+      calculateTotal(state, action) {
+         state.total = action.payload;
+      },
    },
 });
 
-export const { add, remove, updateQuantity } = cartSlice.actions;
+export const { add, remove, updateQuantity, deleteAll, calculateTotal } = cartSlice.actions;
 export default cartSlice.reducer;

@@ -11,6 +11,7 @@ import Appliances from "./pages/Appliances";
 import Cart from "./pages/Cart";
 import LogOut from "./pages/LogOut";
 import AdminAuth from "./pages/AdminAuth";
+import Checkout from "./components/checkout/Checkout";
 
 function App() {
    return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/auth" element={<AdminAuth />} />
             <Route path="/register" element={<Register />} />
             <Route path="/logout" element={<LogOut />} />
+            <Route path="/shipping" element={<Checkout />} />
          </Routes>
       </div>
    );
