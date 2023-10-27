@@ -8,17 +8,18 @@ function Male() {
    const [data, setData] = useState([]);
    const dispatch = useDispatch()
 
-   useEffect(() => {
-      async function fetchData() {
-         // You can await here
-         try {
-            const res = await axios.get("https://fakestoreapi.com/products");
-            setData(res.data);
-         } catch (error) {
-            console.log("res.data");
-            console.log(error);
-         }
+   async function fetchData() {
+      // You can await here
+      try {
+         const res = await axios.get("https://fakestoreapi.com/products");
+         setData(res.data);
+      } catch (error) {
+         console.log("res.data");
+         console.log(error);
       }
+  }
+  
+   useEffect(() => {
       fetchData();
    }, []);
    return (
