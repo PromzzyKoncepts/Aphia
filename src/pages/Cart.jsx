@@ -1,13 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { remove, updateQuantity } from "../components/redux/features/cartSlice";
-import { Link } from "react-router-dom";
+import {
+  calculateTotal,
+  calculateTotalAsync,
+  deleteAll,
+  remove,
+  updateQuantity,
+} from "../components/redux/features/cartSlice";
+import { Link, useNavigate } from "react-router-dom";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 
 const Cart = () => {
+  const cartTotal = useSelector((state) => state.cart.total);
   const cartItems = useSelector((state) => state.cart.items);
+  // const total = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(calculateTotalAsync());
+  }, [cartItems, dispatch]);
 
   // Function to increment the quantity of an item
   const incrementQuantity = (itemId) => {
@@ -92,7 +104,7 @@ const Cart = () => {
                       <h4>&#8358;{item.price}</h4>
                       <div>
                         <button
-                          className="bg-amber-500 text p-2 rounded text-slate-100"
+                          className="bg-amber-500 text p-2 rounded text-slate-100 hover:bg-orange-500 active:bg-orange-600"
                           onClick={() => decrementQuantity(item.id)}
                         >
                           <RemoveIcon />
@@ -101,7 +113,7 @@ const Cart = () => {
                           {item.quantity || 1}
                         </span>
                         <button
-                          className="bg-amber-500 text p-2 rounded text-slate-100"
+                          className="bg-amber-500 text p-2 rounded text-slate-100 hover:bg-orange-500 active:bg-orange-600"
                           onClick={() => incrementQuantity(item.id)}
                         >
                           <AddIcon />
@@ -111,12 +123,20 @@ const Cart = () => {
                   </div>
                 );
               })}
+              <button
+                className="clearAll bg-amber-500 text px-4 py-3 rounded text-slate-100  active:bg-orange-600 mt-4 font-medium hover:bg-red-800 "
+                onClick={() => dispatch(deleteAll())}
+              >
+                Clear All
+              </button>
             </div>
             <div className="checkout item2 col-span-1">
               <h5>Cart Summary</h5>
               <div className="flex items-center justify-between">
                 <p>Sum Total</p>
-                <h3>&#8358;{calculateTotal()}</h3>
+                <h3>&#8358;{Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(
+      cartTotal
+    )}</h3>
               </div>
               <Link
                 className="p-3 bg-[#ff8d3a] no-underline text-slate-50 absolute rounded hover:bg-green-700"
