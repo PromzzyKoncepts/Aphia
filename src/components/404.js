@@ -6,7 +6,7 @@ import unfound from "../assets/404.jpg"
 function NotFound() {
   return (
     <div>
-      <section className="md:grid md:grid-cols-2 md:place-items-center md:mt-9">
+      <section className=" section md:grid md:grid-cols-2 md:place-items-center md:mt-9">
         <div className="col-span-1 item1">
           <h1 className=' md:text-9xl oops text-orange-500 font-bold pb-6'>Oops!</h1>
           <h4>We can't seem to find the page you are looking for.</h4>
