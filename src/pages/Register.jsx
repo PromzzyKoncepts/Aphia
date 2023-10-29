@@ -72,6 +72,7 @@ const Register = () => {
       <h1 className="text-4xl text-amber-500">Create an Account</h1>
       {errors && <h3>{errors}</h3>}
       <TextField
+        required
         id="outlined-basic"
         onChange={(e) => setEmail(e.target.value)}
         label="Email"
@@ -79,13 +80,14 @@ const Register = () => {
       />
       <br />
       <TextField
+        required
         id="outlined-basic"
         onChange={(e) => setUsername(e.target.value)}
         label="Username"
         variant="outlined"
       />
       <br />
-      <FormControl sx={{ width: "100%" }} variant="outlined">
+      <FormControl sx={{ width: "100%" }} variant="outlined" required>
         <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
         <OutlinedInput
           id="outlined-adornment-password"
@@ -107,7 +109,7 @@ const Register = () => {
         />
       </FormControl>
       <br />
-      <FormControl sx={{ width: "100%" }} variant="outlined">
+      <FormControl sx={{ width: "100%" }} variant="outlined" required>
         <InputLabel htmlFor="outlined-adornment-password">
           confirm password
         </InputLabel>
