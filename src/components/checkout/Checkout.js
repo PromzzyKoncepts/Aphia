@@ -95,7 +95,7 @@ export default function Checkout() {
                     variant="contained"
                     color="success"
                   onClick={handleNext}
-                    sx={{ mt: 3, ml: 1, backgroundColor: "#F97316" }} 
+                    sx={{ mt: 3, ml: 1, backgroundColor: "#F59E0B" }} 
                 >
                   {activeStep === steps.length - 1 ? 'Make Payment' : 'Next'}
                 </Button>
