@@ -1,10 +1,11 @@
 * {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* header styles */
+
 .search {
   width: 100%;
   position: relative;
@@ -13,17 +14,16 @@
 
 .searchTerm {
   width: 30vw;
-  border: 2px solid #F59E0B;
+  border: 2px solid #f59e0b;
   border-right: none;
   padding: 10px 20px;
-  /* height: 20px; */
   border-radius: 8px 0 0 8px;
   outline: none;
-  color: #9DBFAF;
+  color: #9dbfaf;
 }
 
-.searchTerm:focus{
-  color: #F59E0B;
+.searchTerm:focus {
+  color: #f59e0b;
 }
 
 .searchButton {
@@ -32,9 +32,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* height: 36px; */
   border: 1px solid #bd7802;
-  background: #F59E0B;
+  background: #f59e0b;
   text-align: center;
   color: #fff;
   border-radius: 0 5px 5px 0;
@@ -42,145 +41,116 @@
   font-size: 20px;
 }
 
-
-
-nav {
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   gap: 1.4rem;
-}
-
-nav a {
-   /* color: #f4f4f4; */
-   text-decoration: none;
-   /* margin-left: 1.4rem; */
-}
-
-nav a svg {
-   font-size: 1.6rem;
-   position: relative;
-}
-
-.count {
-   position: absolute;
-   top: 15px;
-   color: tomato;
-}
-
-a.active {
-   /* background-color: goldenrod; */
-   /* padding: 0.3rem; */
-   /* border-radius: 5px; */
-}
-
 a.active svg {
-   background-color: transparent;
-   color: #F59E0B;
-}
-
-a.active.hover-icon {
-   background-color: inherit;
+  background-color: transparent;
+  color: #f59e0b;
 }
 
 /* hover style */
-nav p {
-   position: relative;
-   cursor: pointer;
-}
-
-nav p .categories {
-   position: absolute;
-   background-color: #353535c6;
-   padding: 1rem;
-   text-align: right;
-}
-
-.categories a.active {
-   /* margin-bottom: 1rem; */
-   /* padding: 0 0.2rem; */
-   font-weight: 700;
-}
 
 form {
-   background-color: #eaeaea;
-   display: flex;
-   flex-direction: column;
-   width: 100%;
-   margin: auto;
-   margin-top: 3rem;
-   padding: 3rem;
-   text-align: center;
-   box-shadow: 1px 2px 5px #00000064;
-   border-radius: 6px;
+  background-color: #eaeaea;
+  display: flex;
+  flex-direction: column;
+  max-width: 40%;
+  margin: auto;
+  margin-top: 3rem;
+  padding: 3rem;
+  text-align: center;
+  box-shadow: 1px 2px 5px #00000064;
+  border-radius: 6px;
 }
 form h1 {
-   color: #F59E0B;
-   /* font-size: 1rem; */
-   margin-bottom: 20px;
+  color: #f59e0b;
+  /* font-size: 1rem; */
+  margin-bottom: 20px;
 }
 form input {
-   margin-bottom: 1rem;
-   padding: 0.5rem;
-   outline: none;
-   border: none;
-   border-radius: 5px;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
 }
 
 form input:nth-child(2) {
-   margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 form input:last-of-type {
-   margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 form button {
-   padding: 0.5rem 1rem;
-   margin-top: 1rem;
-   border: none;
-   cursor: pointer;
-   background-color: #F59E0B;
-   color: #f0f0f0;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  border: none;
+  cursor: pointer;
+  background-color: #f59e0b;
+  color: #f0f0f0;
 }
 
 form button:active {
-   color: #F59E0B;
-   background-color: #f0f0f0;
-   border-radius: 3px;
-
+  color: #f59e0b;
+  background-color: #f0f0f0;
+  border-radius: 3px;
 }
 form button:hover {
-   color: #f0f0f0;
-   background-color: #F59E0B;
-   border-radius: 3px;
+  color: #f0f0f0;
+  background-color: #f59e0b;
+  border-radius: 3px;
 }
 
-
 small {
-   align-self: flex-start;
-   color: tomato;
+  align-self: flex-start;
+  color: tomato;
 }
 
 .images {
-   display: grid;
-   grid-template-columns: repeat(3, 1fr);
-   gap: 0.8rem;
-   grid-template-rows: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+  grid-template-rows: auto;
 }
 
 .image {
-   background-color: whitesmoke;
-   padding: 1rem;
+  background-color: whitesmoke;
+  padding: 1rem;
 }
 
-img {
-   width: 100%;
-   /* height: 100%; */
+.hamburger {
+  display: none;
 }
 
-@media screen and (min-width: 768px) {
-   form {
-      max-width: 40%;
-   }
+@media screen and (max-width: 768px) {
+  form {
+    max-width: 80%;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  .navmenu::-webkit-scrollbar {
+    width: 1em;
+  }
+
+  .navmenu::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .navmenu::-webkit-scrollbar-thumb {
+    background-color: rgba(169, 169, 169, 0.426);
+    background-color: #f4c26b6f;
+    background-color: #7c542f6b;
+    border-radius: 20px;
+  }
+  .navmenu::-webkit-scrollbar-thumb:active {
+    background-color: #dda95061;
+    border-radius: 20px;
+  }
 }
