@@ -136,7 +136,7 @@ small {
   }
 
   .navmenu::-webkit-scrollbar {
-    width: 1em;
+    width: 7px;
   }
 
   .navmenu::-webkit-scrollbar-track {
@@ -150,7 +150,7 @@ small {
     border-radius: 20px;
   }
   .navmenu::-webkit-scrollbar-thumb:active {
-    background-color: #dda95061;
+    background-color: #dda9507f;
     border-radius: 20px;
   }
 }
