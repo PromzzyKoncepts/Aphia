@@ -21,7 +21,7 @@ function Male() {
   
    useEffect(() => {
       fetchData();
-   }, []);
+   }, [data]);
    return (
      <div className="bg-slate-50">
        <h3 className="">Men's Fashion</h3>
