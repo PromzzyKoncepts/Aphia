@@ -60,6 +60,7 @@ const Login = () => {
       <h1 className="text-4xl text-amber-500">Sign In </h1>
       {errors && <h3>{errors}</h3>}
       <TextField
+        required
         id="outlined-basic"
         onChange={(e) => setUsername(e.target.value)}
         label="Username"
@@ -67,9 +68,10 @@ const Login = () => {
       />
       <br />
 
-      <FormControl sx={{ width: "100%" }} variant="outlined">
+      <FormControl sx={{ width: "100%" }} variant="outlined" required>
         <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
         <OutlinedInput
+          required
           id="outlined-adornment-password"
           type={showPassword ? "text" : "password"}
           onChange={(e) => setPassword(e.target.value)}
