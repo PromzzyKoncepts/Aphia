@@ -69,7 +69,7 @@ const StyledMenu = styled.nav`
 
     &.active {
       padding: 0.8rem 10px;
-      background-color: #f7ba5072;
+      background-color: #f97316;
       color: #200000;
       font-weight: 700;
       border-bottom: none;
