@@ -18,3 +18,22 @@
   background-size: fill;
 }
 
+@media screen and (max-width: 768px) {
+  section {
+    padding: 20px;
+    display: flex;
+    flex-direction: column-reverse;
+    /* justify-content: center; */
+    align-items: center;
+  }
+  .not_found_image {
+    height: 250px;
+
+  }
+
+  .oops {
+    font-size: 5rem;
+    padding: 0rem;
+  }
+}
+
