@@ -57,21 +57,7 @@ export default function Checkout() {
   return (
     <React.Fragment>
       <CssBaseline />
-      {/* <AppBar
-        position="absolute"
-        color="default"
-        elevation={0}
-        sx={{
-          position: 'relative',
-          borderBottom: (t) => `1px solid ${t.palette.divider}`,
-        }}
-      >
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            Company name
-          </Typography>
-        </Toolbar>
-      </AppBar> */}
+     
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
           <Typography component="h1" variant="h4" align="center">
@@ -80,7 +66,7 @@ export default function Checkout() {
           <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
             {steps.map((label) => (
               <Step key={label}>
-                <StepLabel>{label}</StepLabel>
+                <StepLabel >{label}</StepLabel>
               </Step>
             ))}
           </Stepper>
@@ -100,15 +86,16 @@ export default function Checkout() {
               {getStepContent(activeStep)}
               <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                 {activeStep !== 0 && (
-                  <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
+                    <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }} variant="outlined">
                     Back
                   </Button>
                 )}
 
                 <Button
-                  variant="contained"
+                    variant="contained"
+                    color="success"
                   onClick={handleNext}
-                  sx={{ mt: 3, ml: 1 }}
+                    sx={{ mt: 3, ml: 1, backgroundColor: "#F59E0B" }} 
                 >
                   {activeStep === steps.length - 1 ? 'Make Payment' : 'Next'}
                 </Button>
@@ -116,7 +103,7 @@ export default function Checkout() {
             </React.Fragment>
           )}
         </Paper>
-        <Copyright />
+        {/* <Copyright /> */}
       </Container>
     </React.Fragment>
   );

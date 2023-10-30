@@ -1,33 +1,29 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import "../stylesheets/NotFound.css";
+import unfound from "../assets/404.jpg"
 
 function NotFound() {
   return (
     <div>
-      <section class="page_404">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-12 ">
-              <div class=" text-center">
-                <div class="four_zero_four_bg ">
-                  <h1 class="text-center text-6xl ">Page Not Found</h1>
+      <section className=" section md:grid md:grid-cols-2 md:place-items-center md:mt-9">
+        <div className="col-span-1 item1">
+          <h1 className=' md:text-9xl oops text-orange-500 font-bold pb-6'>Oops!</h1>
+          <h4>We can't seem to find the page you are looking for.</h4>
+          <small>Error code: 404</small>
+          <p>Here are some helpful links instead</p>
+          <div className='flex flex-col'>
+          <Link className='font-bold no-underline' to="/">Home</Link>
+            <Link className='no-underline' to="/latest">Latest Arrivals</Link>
+            <Link className='no-underline' to="/cart">Cart</Link>
+            <Link className='no-underline' to="/dashboard">Sell on Aphia</Link>
+            <Link className='no-underline' to="/about">About Aphia</Link>
 
-
-                </div>
-
-                <div class="contant_box_404">
-                  <h3 class=" text-4xl">
-                    Oops! Looks like you're lost
-                  </h3>
-
-                  <p>The page you are looking for is not available!</p>
-
-                  <Link to="/" class="link_404 no-underline p-3 text-slate-50 bg-amber-500 rounded hover:bg-orange-500 m-5">Go to Home</Link>
-                </div>
-              </div>
-            </div>
           </div>
+          
+        </div>
+        <div className="item2 col-span-1">
+          <img className='not_found_image md:h-full  object-cover' src={unfound} alt='404 not found' />
         </div>
       </section>
     </div>

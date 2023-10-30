@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -14,18 +14,28 @@ import AdminAuth from "./pages/AdminAuth";
 import Checkout from "./components/checkout/Checkout";
 import Protected from "./HOC/Protected";
 import NotFound from "./components/404";
-import DashBoard from "./pages/DashBoard";
+import Dashboard from "./components/dashboard/Dashboard";
+
 
 function App() {
+   const location = useLocation();
+
+   // I did this part to determine if the header should be displayed
+   const isDashboardRoute = location.pathname === "/dashboard";
+   const showHeader = !isDashboardRoute;
+
+
    return (
       <div className="App">
-         <Header />
+         {showHeader && <Header />}
+         
+         
          <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/fashion/male" element={<Male />} />
             <Route path="/fashion/female" element={<Female />} />
             <Route path="/groceries" element={<Groceries />} />
-            <Route path="/appliances" element={<Appliances />} />
+            <Route path="/accessories" element={<Appliances />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/login" element={<Login />} />
             <Route path="/auth" element={<AdminAuth />} />
@@ -35,12 +45,11 @@ function App() {
                <Route index element={<Checkout />} />
             </Route>
             <Route path="/dashboard" element={<Protected />}>
-               <Route index element={<DashBoard />} />
+               <Route index element={<Dashboard />} />
             </Route>
 
             {/* 404 PAGE */}
             <Route path="*" element={<NotFound />} />
-
          </Routes>
       </div>
    );
